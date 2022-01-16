@@ -6,7 +6,7 @@ import s from "./Movies.module.css";
 const Movies = () => {
     const [inputText, setInputText] = useState("");
     const [query, setQuery] = useState("");
-    const [movies, setMovies] = useState("");
+    const [movies, setMovies] = useState([]);
 
     const handleNameChange = (e) => {
         setInputText(e.currentTarget.value.toLowerCase())
@@ -22,8 +22,8 @@ const Movies = () => {
         if (query.trim() === "") {
             return;
         }
-            APIservice.fetchMovieByKeyWord(query)
-                .then(setMovies)
+        APIservice.fetchMovieByKeyWord(query)
+            .then(setMovies);
         }, [query]);
 
         return (
@@ -39,7 +39,7 @@ const Movies = () => {
                 {movies && movies.map(movie => <li key={movie.id} className={ s.item}>
                 <Link to={`/movies/${movie.id}`} className={s.link }> {movie.title}</Link>
                 </li>) }
-                </ul>
+                </ul> 
             </div>
         )
     }

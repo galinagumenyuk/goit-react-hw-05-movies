@@ -6,9 +6,9 @@ import s from "./Home.module.css";
 const Home = () => {
     const [movies, setMovies] = useState([]);
 
-    useEffect(() => { 
-        APIservice.fetchPopularMovies().then(setMovies)
-    },[])
+    useEffect(() => {
+        APIservice.fetchPopularMovies().then(setMovies);
+    }, []);
 
     return (
         <ul>

@@ -14,3 +14,10 @@ export function fetchMovieByKeyWord(query) {
     .then((res) => res.json())
     .then((data) => data.results);
 }
+
+export function fetchMovieDetails(movieId) {
+  return fetch(
+    `${BASE_URL}/movie/${movieId}?api_key=${KEY}&language=en-US`
+  ).then((res) => res.json());
+  // .then((data) => data.results);
+}
