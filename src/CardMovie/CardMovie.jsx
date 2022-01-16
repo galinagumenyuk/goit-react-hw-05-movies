@@ -16,13 +16,13 @@ const Card = () => {
         <>
             {movie && <article className={s.container}>
                 <img src={`https://www.themoviedb.org/t/p/w200${movie.poster_path}`} alt={movie.title}></img>
-                <div>
+                <div className={s.wrapper}>
                     <h2>{movie.title}({ movie.release_date})</h2>
                     <p>User score: {movie.vote_average * 10}%</p>
                     <h3> Overview</h3>
                     <p>{movie.overview}</p>
                     <h3>Genres</h3>
-                    <p>{ movie.genres.map(genre=>genre.name)}</p>
+                    {movie.genres.map(genre => <span className={s.text}>{genre.name}</span>)}
                 </div>
          </article> }  </>    
 )
