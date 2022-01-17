@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useParams, NavLink, Routes, Route} from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import s from "./CardMovie.module.css";
+import Cast from "../Cast/Cast";
 
 const Card = () => {
     const { movieId } = useParams();
@@ -11,6 +12,7 @@ const Card = () => {
         APIservice.fetchMovieDetails(movieId)
             .then(setMovie);
     }, [movieId]);
+
 
     return (
         <>
@@ -22,9 +24,19 @@ const Card = () => {
                     <h3> Overview</h3>
                     <p>{movie.overview}</p>
                     <h3>Genres</h3>
-                    {movie.genres.map(genre => <span className={s.text}>{genre.name}</span>)}
+                    {movie.genres.map(genre => <span key={genre.name } className={s.text}>{genre.name}</span>)}
                 </div>
-         </article> }  </>    
+            </article>}
+            <p className={s.additionInfo}>Additional information</p>
+            {movie && <div className={s.linkWrapper}>
+                <NavLink to={`/movies/${movie.id}/cast`} className={navData => navData.isActive ? s.active : s.link}> Cast </NavLink>
+                <NavLink to={`/movies/${movie.id}/reviews`} className={navData => navData.isActive ? s.active : s.link}>Reviews</NavLink>
+            </div>}
+            <Routes>
+                <Route path="/movies/:movieId/cast" element={<Cast />}></Route>
+                <Route></Route>
+            </Routes>
+        </>    
 )
 }
 

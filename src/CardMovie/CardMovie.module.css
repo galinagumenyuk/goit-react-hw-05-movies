@@ -1,5 +1,7 @@
 .container {
+  padding: 10px;
   display: flex;
+  border-bottom: 1px solid rgb(18, 161, 161, 0.3);
 }
 .wrapper {
   margin-left: 20px;
@@ -12,4 +14,25 @@ h3 {
 }
 p {
   margin: 0;
+}
+.additionInfo {
+  margin-top: 10px;
+  font-size: 18px;
+}
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+}
+.active {
+  text-decoration: none;
+  color: rgb(14, 126, 126);
+  font-size: 14px;
+}
+.linkWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(18, 161, 161, 0.3);
 }
