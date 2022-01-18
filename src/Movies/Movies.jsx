@@ -20,6 +20,12 @@ const Movies = () => {
         navigate({ ...location, search: `query=${inputText}` });
     }
     
+    const handleKeyDown = (e) => { 
+        if (e.key === 'Enter') { 
+            setQuery(inputText); 
+        navigate({ ...location, search: `query=${inputText}` });
+        }
+    }
 
     useEffect(() => {
         if (query.trim() === "") {
@@ -36,6 +42,7 @@ const Movies = () => {
                     autoComplete="off"
                     autoFocus
                     onChange={handleNameChange}
+                    onKeyPress={handleKeyDown}
                 ></input>
                 <button type='submit' onClick={handleClick}>Search</button>
                 <ul>
