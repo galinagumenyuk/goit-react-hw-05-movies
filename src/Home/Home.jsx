@@ -11,11 +11,14 @@ const Home = () => {
     }, []);
 
     return (
+        <>
+            <h1>Tranding today</h1>
         <ul>
             {movies && movies.map(movie => <li key={movie.id} className={ s.item}>
                 <Link to={`/movies/${movie.id}`} className={s.link }> {movie.title}</Link>
             </li>) }
         </ul>
+        </>
     )
     
 }

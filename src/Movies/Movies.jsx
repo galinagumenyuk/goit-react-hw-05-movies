@@ -17,7 +17,6 @@ const Movies = () => {
     const handleClick = (e) => {
         e.preventDefault();
         setQuery(inputText); 
-        console.log(location);
         navigate({ ...location, search: `query=${inputText}` });
     }
     
