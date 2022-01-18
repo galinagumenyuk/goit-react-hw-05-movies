@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import { useParams} from "react-router-dom";
-// import s from "./CardMovie.module.css";
+import s from "./Cast.module.css";
 
 const Cast = () => { 
      const { movieId } = useParams();
@@ -13,10 +13,13 @@ const Cast = () => {
     
     return (
         <ul>
-            {cast && cast.map(item => <li key={cast.id}>
-                <img src={`https://www.themoviedb.org/t/p/w200${cast.profile_path}`} alt={cast.name}></img>
-                <p>{cast.name}</p>
-                <p>Character: {cast.character}</p>
+            {cast && cast.map(item => <li key={item.id}>
+                <img src={`https://www.themoviedb.org/t/p/w45${item.profile_path}`} alt={item.name}></img>
+                <div>
+                <p>{item.name}</p>
+                <p>Character:</p>
+                <p>{item.character}</p>
+                </div>
             </li>)}
         </ul>
 

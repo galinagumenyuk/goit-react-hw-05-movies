@@ -1,0 +1,17 @@
+li {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin: 5px;
+}
+
+p {
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+div {
+  margin-left: 5px;
+}
+ul {
+  padding: 0%;
+}

@@ -23,13 +23,13 @@ export function fetchMovieDetails(movieId) {
 
 export function fetchCast(movieId) {
   return fetch(
-    `${BASE_URL}/movie/{movieId}/credits?api_key=${KEY}&language=en-US`
-  ).then((res) => res.json());
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&language=en-US`
+  ).then((res) => res.json().then((data) => data.cast));
 }
 
 export function fetchReviews(movieId) {
   return fetch(
-    `${BASE_URL}/movie/{movieId}/reviews?api_key=${KEY}&language=en-US&page=1`
+    `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US&page=1`
   )
     .then((res) => res.json())
     .then((data) => data.results);

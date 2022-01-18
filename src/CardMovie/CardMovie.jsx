@@ -1,8 +1,9 @@
-import { useParams, NavLink, Routes, Route} from "react-router-dom";
+import { useParams, NavLink, Outlet} from "react-router-dom";
 import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import s from "./CardMovie.module.css";
-import Cast from "../Cast/Cast";
+// import Cast from "../Cast/Cast";
+// import Reviews from "../Reviews/Reviews";
 
 const Card = () => {
     const { movieId } = useParams();
@@ -17,7 +18,7 @@ const Card = () => {
     return (
         <>
             {movie && <article className={s.container}>
-                <img src={`https://www.themoviedb.org/t/p/w200${movie.poster_path}`} alt={movie.title}></img>
+                <img src={`https://www.themoviedb.org/t/p/w185${movie.poster_path}`} alt={movie.title}></img>
                 <div className={s.wrapper}>
                     <h2>{movie.title}({ movie.release_date})</h2>
                     <p>User score: {movie.vote_average * 10}%</p>
@@ -32,10 +33,7 @@ const Card = () => {
                 <NavLink to={`/movies/${movie.id}/cast`} className={navData => navData.isActive ? s.active : s.link}> Cast </NavLink>
                 <NavLink to={`/movies/${movie.id}/reviews`} className={navData => navData.isActive ? s.active : s.link}>Reviews</NavLink>
             </div>}
-            <Routes>
-                <Route path="/movies/:movieId/cast" element={<Cast />}></Route>
-                <Route></Route>
-            </Routes>
+            <Outlet />
         </>    
 )
 }
