@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation} from "react-router-dom";
 import s from "./Movies.module.css";
 
 const Movies = () => {
     const [inputText, setInputText] = useState("");
     const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleNameChange = (e) => {
         setInputText(e.currentTarget.value.toLowerCase())
@@ -14,7 +16,9 @@ const Movies = () => {
     
     const handleClick = (e) => {
         e.preventDefault();
-         setQuery(inputText); 
+        setQuery(inputText); 
+        console.log(location);
+        navigate({ ...location, search: `query=${inputText}` });
     }
     
 
