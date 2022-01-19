@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import { Link, useNavigate, useLocation, useSearchParams} from "react-router-dom";
 import s from "./Movies.module.css";
+import PropTypes from "prop-types";
 
 const Movies = () => {
     const [inputText, setInputText] = useState("");
@@ -66,3 +67,12 @@ const Movies = () => {
     }
 
 export default Movies;
+
+Movies.propTypes = {
+  query: PropTypes.string,
+  inputText: PropTypes.string,
+  movies: PropTypes.array,
+  handleNameChange: PropTypes.func,
+  handleKeyDown: PropTypes.func,
+  handleClick: PropTypes.func,
+};

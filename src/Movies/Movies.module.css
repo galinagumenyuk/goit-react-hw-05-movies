@@ -1,7 +1,7 @@
-/* .link {
-  text-decoration: none;
+.link {
   color: black;
-} */
+  font-size: 18px;
+}
 .item {
   list-style: none;
   margin-bottom: 6px;

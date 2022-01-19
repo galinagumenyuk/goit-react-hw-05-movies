@@ -2,6 +2,7 @@ import * as APIservice from "../APIservice";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import s from "./Home.module.css";
+import PropTypes from "prop-types";
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
@@ -27,3 +28,7 @@ const Home = () => {
 }
 
 export default Home;
+
+Home.propTypes = { 
+    movies: PropTypes.array,
+}

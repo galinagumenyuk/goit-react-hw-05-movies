@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import { useParams} from "react-router-dom";
 import s from "./Reviews.module.css";
+import PropTypes from "prop-types";
 
 const Reviews = () => { 
      const { movieId } = useParams();
@@ -23,3 +24,8 @@ const Reviews = () => {
 }
 
 export default Reviews;
+
+
+Reviews.propTypes = {
+    reviews: PropTypes.array
+}

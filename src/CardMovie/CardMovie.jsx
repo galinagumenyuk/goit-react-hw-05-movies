@@ -2,6 +2,7 @@ import { useParams, NavLink, Outlet, useNavigate, useLocation} from "react-route
 import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import s from "./CardMovie.module.css";
+import PropTypes from "prop-types";
 
 
 const Card = () => {
@@ -45,3 +46,8 @@ const Card = () => {
 }
 
 export default Card;
+
+Card.propTypes = {
+  movie: PropTypes.array,
+  onGoBack: PropTypes.func,
+};

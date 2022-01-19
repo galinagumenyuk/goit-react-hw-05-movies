@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
 import { useParams} from "react-router-dom";
 import s from "./Cast.module.css";
+import PropTypes from "prop-types";
 
 const Cast = () => { 
      const { movieId } = useParams();
@@ -13,7 +14,7 @@ const Cast = () => {
     
     return (
         <ul>
-            {cast && cast.map(item => <li key={item.id}>
+            {cast && cast.map(item => <li key={item.id} className={ s.link}>
                 <img src={`https://www.themoviedb.org/t/p/w45${item.profile_path}`} alt={item.name}></img>
                 <div>
                 <p>{item.name}</p>
@@ -27,3 +28,7 @@ const Cast = () => {
 }
 
 export default Cast;
+
+Cast.propTypes = {
+    cast: PropTypes.array
+}
