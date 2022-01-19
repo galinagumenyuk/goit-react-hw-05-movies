@@ -25,10 +25,10 @@ const Card = () => {
         <>
             <button type="button" onClick={onGoBack} className={ s.button}>Back</button>
             {movie && <article className={s.container}>
-                <img src={`https://www.themoviedb.org/t/p/w185${movie.poster_path}`} alt={movie.title}></img>
+                <img src={`https://www.themoviedb.org/t/p/w500${movie.poster_path}`} alt={movie.title}></img>
                 <div className={s.wrapper}>
                     <h2>{movie.title}({ new Date(Date.parse(movie.release_date)).getFullYear() + ''})</h2>
-                    <p>User score: {movie.vote_average * 10}%</p>
+                    <p className={s.score}>User score: {movie.vote_average * 10}%</p>
                     <h3> Overview</h3>
                     <p>{movie.overview}</p>
                     <h3>Genres</h3>

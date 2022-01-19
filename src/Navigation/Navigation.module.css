@@ -1,5 +1,5 @@
 .nav {
-  padding: 10px;
+  padding: 20px;
   border-bottom: 1px solid rgb(14, 124, 124);
   background-color: rgb(18, 161, 161, 0.3);
 }
@@ -8,13 +8,13 @@
   text-decoration: none;
   margin: 10px;
   color: black;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
 }
 .active {
   text-decoration: none;
   margin: 10px;
   color: rgb(14, 124, 124);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 600;
 }

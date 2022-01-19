@@ -4,9 +4,12 @@ import { useParams} from "react-router-dom";
 import s from "./Cast.module.css";
 import PropTypes from "prop-types";
 
+
 const Cast = () => { 
      const { movieId } = useParams();
     const [cast, setCast] = useState(null);
+
+
      useEffect(() => {
         APIservice.fetchCast(movieId)
             .then(setCast);
@@ -15,7 +18,7 @@ const Cast = () => {
     return (
         <ul>
             {cast && cast.map(item => <li key={item.id} className={ s.link}>
-                <img src={`https://www.themoviedb.org/t/p/w45${item.profile_path}`} alt={item.name}></img>
+                <img src={`https://www.themoviedb.org/t/p/w185${item.profile_path}`} alt={item.name}></img>
                 <div>
                 <p>{item.name}</p>
                 <p>Character:</p>
@@ -23,7 +26,6 @@ const Cast = () => {
                 </div>
             </li>)}
         </ul>
-
     )
 }
 
