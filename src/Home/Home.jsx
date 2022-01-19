@@ -1,10 +1,11 @@
 import * as APIservice from "../APIservice";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import s from "./Home.module.css";
 
 const Home = () => {
     const [movies, setMovies] = useState([]);
+    const location = useLocation();
 
     useEffect(() => {
         APIservice.fetchPopularMovies().then(setMovies);
@@ -15,7 +16,9 @@ const Home = () => {
             <h1>Tranding today</h1>
         <ul>
             {movies && movies.map(movie => <li key={movie.id} className={ s.item}>
-                <Link to={`/movies/${movie.id}`} className={s.link }> {movie.title}</Link>
+                <Link to={ `/movies/${movie.id}`}
+                    state={{ from: location}}
+                 className={s.link }> {movie.title}</Link>
             </li>) }
         </ul>
         </>

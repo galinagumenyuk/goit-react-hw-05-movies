@@ -47,7 +47,7 @@ const Movies = () => {
                 <button type='submit' onClick={handleClick}>Search</button>
                 <ul>
                 {movies && movies.map(movie => <li key={movie.id} className={ s.item}>
-                <Link to={`/movies/${movie.id}`} className={s.link }> {movie.title}</Link>
+                <Link to={`/movies/${movie.id}`} state={{from: location}} className={s.link }> {movie.title}</Link>
                 </li>) }
                 </ul> 
             </div>
