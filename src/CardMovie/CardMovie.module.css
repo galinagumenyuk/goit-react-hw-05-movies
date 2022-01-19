@@ -36,3 +36,6 @@ p {
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(18, 161, 161, 0.3);
 }
+.button {
+  margin-top: 4px;
+}

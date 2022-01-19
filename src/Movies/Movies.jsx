@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as APIservice from "../APIservice";
-import { Link, useNavigate, useLocation} from "react-router-dom";
+import { Link, useNavigate, useLocation, useSearchParams} from "react-router-dom";
 import s from "./Movies.module.css";
 
 const Movies = () => {
@@ -9,6 +9,10 @@ const Movies = () => {
     const [movies, setMovies] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
+    const [searchParams] = useSearchParams();
+
+    const search = searchParams.get("query");
+    
 
     const handleNameChange = (e) => {
         setInputText(e.currentTarget.value.toLowerCase())
@@ -26,14 +30,21 @@ const Movies = () => {
         navigate({ ...location, search: `query=${inputText}` });
         }
     }
-
+    
     useEffect(() => {
         if (query.trim() === "") {
             return;
         }
         APIservice.fetchMovieByKeyWord(query)
             .then(setMovies);
-        }, [query]);
+    }, [query]);
+
+    useEffect(() => {
+        if (search === null) { return;}
+        APIservice.fetchMovieByKeyWord(search)
+            .then(setMovies);
+    }, [search]);
+    
 
         return (
             <div>
@@ -48,7 +59,7 @@ const Movies = () => {
                 <ul>
                 {movies && movies.map(movie => <li key={movie.id} className={ s.item}>
                 <Link to={`/movies/${movie.id}`} state={{from: location}} className={s.link }> {movie.title}</Link>
-                </li>) }
+                </li>)}
                 </ul> 
             </div>
         )

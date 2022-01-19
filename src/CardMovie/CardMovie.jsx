@@ -11,7 +11,7 @@ const Card = () => {
     const [movie, setMovie] = useState(null);
     
     const onGoBack = () => {
-        (location.state && location.state.from) ? navigate(location.state.from) : navigate("/")
+        (location.state && location.state.from) ? navigate(location.state.from) : navigate("/");
      };
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Card = () => {
 
     return (
         <>
-            <button type="button" onClick={onGoBack}>Back</button>
+            <button type="button" onClick={onGoBack} className={ s.button}>Back</button>
             {movie && <article className={s.container}>
                 <img src={`https://www.themoviedb.org/t/p/w185${movie.poster_path}`} alt={movie.title}></img>
                 <div className={s.wrapper}>
