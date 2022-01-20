@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as APIservice from "../APIservice";
+import * as apiService from "../../apiService";
 import { useParams} from "react-router-dom";
 import s from "./Reviews.module.css";
 import PropTypes from "prop-types";
@@ -8,7 +8,7 @@ const Reviews = () => {
      const { movieId } = useParams();
     const [reviews, setReviews] = useState([]);
      useEffect(() => {
-        APIservice.fetchReviews(movieId)
+        apiService.fetchReviews(movieId)
             .then(setReviews);
      }, [movieId]);
     

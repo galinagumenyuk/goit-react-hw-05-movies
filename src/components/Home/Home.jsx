@@ -1,4 +1,4 @@
-import * as APIservice from "../APIservice";
+import * as apiService from "../../apiService";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import s from "./Home.module.css";
@@ -9,7 +9,7 @@ const Home = () => {
     const location = useLocation();
 
     useEffect(() => {
-        APIservice.fetchPopularMovies().then(setMovies);
+        apiService.fetchPopularMovies().then(setMovies);
     }, []);
 
     return (

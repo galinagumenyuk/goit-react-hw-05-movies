@@ -1,6 +1,6 @@
 import { useParams, NavLink, Outlet, useNavigate, useLocation} from "react-router-dom";
 import { useState, useEffect } from "react";
-import * as APIservice from "../APIservice";
+import * as apiService from "../../apiService";
 import s from "./CardMovie.module.css";
 import PropTypes from "prop-types";
 
@@ -10,16 +10,15 @@ const Card = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [movie, setMovie] = useState(null);
+
+    useEffect(() => {
+        apiService.fetchMovieDetails(movieId)
+            .then(setMovie);
+    }, [movieId]);
     
     const onGoBack = () => {
         (location.state && location.state.from) ? navigate(location.state.from) : navigate("/");
      };
-
-    useEffect(() => {
-        APIservice.fetchMovieDetails(movieId)
-            .then(setMovie);
-    }, [movieId]);
-
 
     return (
         <>

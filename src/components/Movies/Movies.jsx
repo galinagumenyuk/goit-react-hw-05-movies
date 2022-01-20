@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as APIservice from "../APIservice";
+import * as apiService from "../../apiService";
 import { Link, useNavigate, useLocation, useSearchParams} from "react-router-dom";
 import s from "./Movies.module.css";
 import PropTypes from "prop-types";
@@ -14,6 +14,19 @@ const Movies = () => {
 
     const search = searchParams.get("query");
     
+    useEffect(() => {
+        if (query.trim() === "") {
+            return;
+        }
+        apiService.fetchMovieByKeyWord(query)
+            .then(setMovies);
+    }, [query]);
+
+    useEffect(() => {
+        if (search === null) { return;}
+        apiService.fetchMovieByKeyWord(search)
+            .then(setMovies);
+    }, [search]);
 
     const handleNameChange = (e) => {
         setInputText(e.currentTarget.value.toLowerCase())
@@ -31,21 +44,6 @@ const Movies = () => {
         navigate({ ...location, search: `query=${inputText}` });
         }
     }
-    
-    useEffect(() => {
-        if (query.trim() === "") {
-            return;
-        }
-        APIservice.fetchMovieByKeyWord(query)
-            .then(setMovies);
-    }, [query]);
-
-    useEffect(() => {
-        if (search === null) { return;}
-        APIservice.fetchMovieByKeyWord(search)
-            .then(setMovies);
-    }, [search]);
-    
 
         return (
             <div>

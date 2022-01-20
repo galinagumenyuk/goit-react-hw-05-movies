@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as APIservice from "../APIservice";
+import * as apiService from "../../apiService";
 import { useParams} from "react-router-dom";
 import s from "./Cast.module.css";
 import PropTypes from "prop-types";
@@ -11,7 +11,7 @@ const Cast = () => {
 
 
      useEffect(() => {
-        APIservice.fetchCast(movieId)
+        apiService.fetchCast(movieId)
             .then(setCast);
      }, [movieId]);
     
